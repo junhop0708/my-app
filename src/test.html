@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // concat, filter, map slice, spread(전개) 연산자
+
+      console.log('1.======= 스프레드 연산자');
+      const a = [1, 2, 3];
+      const b = [...a]; // 깊은 연산자 (spread 연산자)
+
+      b.push(4); // b의 데이터 변경
+      console.log(`a의 값은 : ${a}`); // 1, 2, 3
+      console.log(`a의 값은 : ${b}`); // 1, 2, 3, 4
+      const c = [...a, 4];
+
+      console.log('2.======= 추가하기');
+      const a2 = [1, 2, 3];
+      const b2 = a2.concat(4); // 깊은 복사
+      console.log(`a2의 값은 : ${a2}`); // 1,2,3
+      console.log(`b2의 값은 : ${b2}`); // 1,2,3,4
+
+      const c2 = [0, ...a2, 4];
+      console.log(`c2의 값은 : ${c2}`); // 1, 2, 3, 4
+
+      console.log('3.======= 걸러내기'); // filter는 보통 삭제할 때, 사용함
+      const a3 = [1, 2, 3];
+
+      const b3 = a3.filter((n) => {
+        return n != 1;
+      }); // boolean을 return 받는다. -> true만 걸러낸다.
+
+      console.log(`b3의 값은 : ${b3}`);
+
+      console.log('4.======= 잘라내기');
+      const a4 = [1, 2, 3];
+      const b4 = a4.slice(0, 2);
+      console.log(`b4의 값은 : ${b4}`); // [1,2]
+
+      const c4 = [...a4.slice(0, 2), 4, ...a4.slice(2, 3)];
+      console.log(`c4의 값은 : ${c4}`); // [[1,2,4,3]]
+
+      console.log('5.======= 반복하기');
+      const a5 = [1, 2, 3];
+
+      // 해당 for 문법은 JSX에서 사용 불가능
+      for (let i = 0; i < a5.length; i++) {
+        console.log(a5[i]);
+      }
+
+      // forEach는 리턴타입이 void 임 (리턴을 못함)
+      a5.forEach((n) => {
+        console.log(n);
+      });
+
+      // map() 함수는 리턴 타입이 any 이므로 어떤 타입이든지 모두 return을 해줌
+      const b5 = a5.map((n) => n);
+      // const b5 = [...a5];
+      console.log(b5);
+    </script>
+  </body>
+</html>

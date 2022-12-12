@@ -15,30 +15,18 @@ import './App.css';
 //     - 외부 파일에 적는 방법
 //     - 라이브러리 사용 (부트스트랩, component-styled)
 
-let a = 10; // 변수
-const b = [10, 20, 30]; // 상수
-
 // 대괄호 : [], 중괄호 : {}, 소괄호 : ()
 // return 문안에 JSX가 한줄로 작성되어있으면  소괄호() 가 필요없음
 function App() {
-  let c;
-  let d = undefined;
-
-  console.log(1, c, d);
-
-  const myStyle = {
-    color: 'red',
-  };
+  let list = [1, 2, 3];
 
   return (
     <div>
-      <div style={myStyle}>
-        안녕 {a === 10 ? '10입니다.' : '10이 아닙니다.'}
+      <div>
+        {list.map((n) => (
+          <h1>{n}</h1>
+        ))}
       </div>
-      <h1 className="box-style">해딩태그 {b === 20 && '20입니다.'}</h1>
-      <hr />
-      <input type="text" />
-      <div>{b[0]}</div>
     </div>
   );
 }
