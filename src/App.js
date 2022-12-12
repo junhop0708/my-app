@@ -16,7 +16,7 @@ import './App.css';
 //     - 라이브러리 사용 (부트스트랩, component-styled)
 
 let a = 10; // 변수
-const b = 20; // 상수
+const b = [10, 20, 30]; // 상수
 
 // 대괄호 : [], 중괄호 : {}, 소괄호 : ()
 // return 문안에 JSX가 한줄로 작성되어있으면  소괄호() 가 필요없음
@@ -37,6 +37,8 @@ function App() {
       </div>
       <h1 className="box-style">해딩태그 {b === 20 && '20입니다.'}</h1>
       <hr />
+      <input type="text" />
+      <div>{b[0]}</div>
     </div>
   );
 }
