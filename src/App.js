@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { cleanup } from '@testing-library/react';
+import { useEffect } from 'react';
+import Third from './aa/Third';
 import './App.css';
-import Sub from './Sub.js';
+import Sub from './Sub';
+import { num } from './Sub';
 
 // 0. React 엔진- 데이터 변경을 감지해서 UI를 그려주는 엔진
 // 1. 실행과정 (index.html) - Single Page Application (SPA)
@@ -20,63 +23,12 @@ import Sub from './Sub.js';
 // 대괄호 : [], 중괄호 : {}, 소괄호 : ()
 // return 문안에 JSX가 한줄로 작성되어있으면  소괄호() 가 필요없음
 function App() {
-  let list = [1, 2, 3];
-  // let number = 1; // 상태 값 아님
-  const [number, setNumber] = useState(2); // React안에 hooks 라이브러리 상태값이 됨.
-
-  const add = () => {
-    setNumber(number + 1); // React한테 number 값을 변경한다고 요청하는 함수
-    console.log('add', number);
-  };
-
-  // 랜더링 시점 = 상태값 변경
-  // 상태가 변경이 되면 return이 전체 reload
-  // React는 component 설계를 잘해야 함
-
-  // 다운로드 받음
-  console.log('App start');
-
-  const [num, setNum] = useState(5);
-
-  let sample = [
-    { id: 1, name: '홍길동' },
-    { id: 2, name: '이순신' },
-    { id: 3, name: '장보고' },
-    { id: 4, name: '세종대왕' },
-  ];
-
-  const [users, setUsers] = useState(sample); // reference가 변경이 되어야 동작함
-
-  // 다운로드 버튼을 클릭하면 실행되는 함수
-  const download = () => {
-    // 기존 데이터 셋팅
-
-    //setUsers([...sample]); // 이렇게하면 reference가 변경이 되므로 무조건 다시 re-rendering 진행
-
-    //const a = sample.concat({ id: 5, name: '퇴계이황' });
-    // concat함수에 새로운 변수를 선언하여 추가를 하면, 동일한 데이터로 인식하여 객체에 추가는 안됨
-    //fetch().then().then();
-
-    console.log(sample);
-    //sample.push({ id: 6, name: '율곡이이' });
-    setUsers([...sample, { id: num, name: '퇴계이황' }]); // 깊은 복사를 해야 다시 rendering 가능
-    setNum(num + 1);
-  };
-
-  console.log('rendering');
-
   return (
     <div>
-      <h1>숫자 : {number}</h1>
-      <button onClick={add}>더하기</button>
       <Sub />
-      <hr />
-      <button onClick={download}>다운로드</button>
-      {users.map((u) => (
-        <h1>
-          {u.id}, {u.name}
-        </h1>
-      ))}
+      <Third />
+      {num}
+      Hello World
     </div>
   );
 }
