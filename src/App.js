@@ -15,7 +15,7 @@ function App() {
     return sum;
   };
 
-  // React hook : React 16.8에 추가도니 라이브러리
+  // React hook : React 16.8에 추가된 라이브러리
   const addResult = useMemo(() => getAddResult(), [list]);
 
   // list의 값을 바꾸면, return이 다시 실행되므로, getAddResult()함수가 다시 실행됨
